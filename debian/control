@@ -1,15 +1,31 @@
-Source: template-repository
-Section: unknown
+Source: multistrap
+Section: utils
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper (>= 10), bash-completion
+Build-Depends-Indep: intltool, po4a (>= 0.37.1)
+Standards-Version: 3.9.6
+Vcs-Browser: https://browse.dgit.debian.org/multistrap.git/
+Vcs-Git: https://git.dgit.debian.org/multistrap
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: multistrap
+Section: admin
+Architecture: all
+Depends: ${perl:Depends}, ${misc:Depends}, apt, libconfig-auto-perl, 
+ liblocale-gettext-perl, libparse-debian-packages-perl
+Suggests: fakeroot
+Description: multiple repository bootstrap based on apt
+ A debootstrap replacement with multiple repository support,
+ using apt to handle all dependency issues and conflicts.
+ .
+ Multistrap includes support for native and foreign architecture
+ bootstrap environments. Foreign bootstraps only need minimal
+ configuration on the final device. Also supports cleaning up the
+ generated bootstrap filesystem to remove downloaded packages and
+ hooks to modify the files in the bootstrap filesystem after the
+ packages have been unpacked but before being configured.
+ .
+ Unlike debootstrap, multistrap relies on working versions of
+ dpkg and apt outside the final filesystem. If dpkg supports
+ MultiArch, foreign architecture libraries can be installed,
+ where available.
