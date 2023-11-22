@@ -1,0 +1,3 @@
+# see dh_installdeb(1)
+# Lines in this file correspond to dpkg-maintscript-helper(1) commands and parameters.
+rm_conffile /etc/bash_completion.d/multistrap 2.2.7~ multistrap
